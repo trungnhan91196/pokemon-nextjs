@@ -89,7 +89,6 @@ export default function Page({ pokemonList, typeList }: PageProps) {
         const combinedPokemon = await getCombinedPokemon(listTypeSelect);
         let arr: IPokemon[] = []
         combinedPokemon.forEach((pokemon) => {
-          console.log('pokemon', pokemon);
           arr.push(pokemon)
         })
         setData(arr);
@@ -97,9 +96,9 @@ export default function Page({ pokemonList, typeList }: PageProps) {
     }
     getPokeByType();
   }, [listTypeSelect])
-  console.log(`Combined Pokémon for types`, data);
+
   useEffect(() => {
-    if (pokemonList?.results.length) {
+    if (pokemonList?.results?.length) {
       setData(pokemonList?.results);
       setIsloading(false);
     }
